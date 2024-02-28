@@ -8,14 +8,19 @@ import { useEffect, useState } from "react"
 import { searchMode } from "../actions/searchMode"
 import { randomNumbersFromArray } from "../helpers/functions/randomNumberFromArray"
 const HomePage = () => {
-    const random_numbers = document.querySelector(".random-numbers")
+    const random_numbers = document.getElementById("random-numbers")
+    console.log(random_numbers)
     const dispatch = useDispatch()
     const searchStatus = useSelector(state => state.searchStatus)
     console.log(searchStatus)
     const handleSubmit = (e) => {
         const arr = randomNumber(parseInt(e.quantity), parseInt(e.min), parseInt(e.max));
-        random_numbers.innerHTML = ""
-        console.log(random_numbers)
+        if(random_numbers)
+        {
+            random_numbers.innerHTML = ""
+        }
+        
+        // console.log(random_numbers)
         arr.forEach(item => {
             const span = document.createElement("span")
             span.className = "random-number"
@@ -25,7 +30,10 @@ const HomePage = () => {
     }
     const handleSubmit2 = (e) => {
         console.log(e)
-        random_numbers.innerHTML = "";
+        if(random_numbers)
+        {
+            random_numbers.innerHTML = ""
+        }
         const arr2 = randomNumbersFromArray(parseInt(e.quantity), e.input)
         console.log(arr2)
         arr2.forEach(item => {
@@ -38,7 +46,10 @@ const HomePage = () => {
     const onChange = (e) => {
         console.log(e)
         dispatch(searchMode(e))
-        random_numbers.innerHTML = "";
+        if(random_numbers)
+        {
+            random_numbers.innerHTML = ""
+        }
     }
 
     return (
@@ -101,7 +112,7 @@ const HomePage = () => {
 
                 }
             
-            <div className="random-numbers">
+            <div id="random-numbers">
 
             </div>
         </div >
