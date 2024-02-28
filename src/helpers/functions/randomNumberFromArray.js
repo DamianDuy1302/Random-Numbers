@@ -1,5 +1,6 @@
 export const randomNumbersFromArray = (quantity, string) => {
-    let arrString = string.split(" ");
+    let sep = /\s+/;
+    let arrString = string.split(sep);
     let arrNumber = []
     arrString.forEach(item => {
         arrNumber.push(parseInt(item))
