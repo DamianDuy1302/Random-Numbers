@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { quantityReducer } from "./quantityReducer"
+import { searchStatus } from "./searchStatus";
 export const allReducers = combineReducers({
-    quantityReducer,
+    searchStatus,
 })

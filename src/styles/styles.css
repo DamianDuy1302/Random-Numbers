@@ -50,3 +50,6 @@ body{
     background-color: var(--main-blue) !important;
     color: #fff;
 }
+.switch{
+    margin-bottom: 15px;
+}
