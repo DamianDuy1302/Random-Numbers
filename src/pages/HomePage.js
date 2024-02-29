@@ -8,12 +8,15 @@ import { useEffect, useState } from "react"
 import { searchMode } from "../actions/searchMode"
 import { randomNumbersFromArray } from "../helpers/functions/randomNumberFromArray"
 const HomePage = () => {
+    var stringNumbers = ""
     const random_numbers = document.getElementById("random-numbers")
     console.log(random_numbers)
     const dispatch = useDispatch()
     const searchStatus = useSelector(state => state.searchStatus)
     console.log(searchStatus)
     const handleSubmit = (e) => {
+        stringNumbers = "" 
+        const divStringNumbers = document.createElement("div")
         const arr = randomNumber(parseInt(e.quantity), parseInt(e.min), parseInt(e.max));
         if(random_numbers)
         {
@@ -24,11 +27,17 @@ const HomePage = () => {
         arr.forEach(item => {
             const span = document.createElement("span")
             span.className = "random-number"
-            span.innerHTML = `${item}`
-            random_numbers.appendChild(span)
+            span.innerHTML = `${item} `
+            // random_numbers.appendChild(span)
+            stringNumbers = stringNumbers.concat(item.toString(10).concat(" "))
+            console.log(item.toString(10).concat(" "))
         })
+        divStringNumbers.innerHTML = `${stringNumbers}`
+        console.log(stringNumbers)
+        random_numbers.appendChild(divStringNumbers)
     }
     const handleSubmit2 = (e) => {
+        stringNumbers = ""
         console.log(e)
         if(random_numbers)
         {
@@ -36,12 +45,19 @@ const HomePage = () => {
         }
         const arr2 = randomNumbersFromArray(parseInt(e.quantity), e.input)
         console.log(arr2)
+        const divStringNumbers = document.createElement("div")
         arr2.forEach(item => {
             const span = document.createElement("span")
             span.className = "random-number"
             span.innerHTML = `${item}`
-            random_numbers.appendChild(span)
+            // random_numbers.appendChild(span)
+            stringNumbers = stringNumbers.concat(item.toString(10).concat(" "))
+            console.log(item.toString(10).concat(" "))
         })
+        
+        divStringNumbers.innerHTML = `${stringNumbers}`
+        console.log(stringNumbers)
+        random_numbers.appendChild(divStringNumbers)
     }
     const onChange = (e) => {
         console.log(e)
@@ -80,7 +96,7 @@ const HomePage = () => {
                                     </FormItem>
                                 </Col>
                                 <FormItem>
-                                    <Button htmlType="submit" type="primary" className="ml-15 random-button">Random</Button>
+                                    <Button htmlType="submit" type="primary" className="random-button">Random</Button>
                                 </FormItem>
                             </Row>
                         </Form>

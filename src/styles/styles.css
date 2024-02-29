@@ -40,6 +40,7 @@ body{
 }
 .random-numbers{
     padding-bottom: 50px;
+    line-height: 2em;
 }
 .random-number{
     display: inline-block;
