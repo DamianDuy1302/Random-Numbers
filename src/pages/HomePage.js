@@ -118,7 +118,7 @@ const HomePage = () => {
                                     </FormItem>
                                 </Col>
                                 <FormItem>
-                                    <Button htmlType="submit" type="primary" className="ml-15 random-button">Random</Button>
+                                    <Button htmlType="submit" type="primary" className="random-button">Random</Button>
                                 </FormItem>
                             </Row>
                         </Form>
